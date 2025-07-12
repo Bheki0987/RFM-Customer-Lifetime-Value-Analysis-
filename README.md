@@ -86,3 +86,6 @@ git clone https://github.com/Bheki0987/RFM-Customer-Lifetime-Value-Analysis.git
 - 📧 bhekimogola123@gmail.com
 - **👤 LinkedIn:** [Bheki Mogola](https://www.linkedin.com/in/bheki-mogola-8481122b7/)
 - **📈 Tableau Public:** [Bheki Mogola](https://public.tableau.com/app/profile/bheki.mogola/vizzes)
+
+## ℹ️ License
+This project is licensed under the MIT License.
