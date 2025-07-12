@@ -58,6 +58,7 @@ The dashboard offers:
 
 - Filters
   - Interactive filters for recency, frequency, and segment
+  - Created interactive KPIs to show Total Revenue, No of Customers and Total RFM Score
 
 ▶ **View it live:** [Tableau Public Dashboard (Bheki Mogola)](https://public.tableau.com/views/CustomerLifetimeValueAnalysisVisualization/InteractiveDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
