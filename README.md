@@ -36,7 +36,8 @@ To help businesses identify high-value, loyal, or lost customers using the RFM s
    - Loyal Customers
    - At Risk
    - Lost
-   - Need More Attention, etc.
+   - Need More Attention
+   - Others
 
 4. Export to Tableau
  - Final dataset saved as rfm_segment.csv
