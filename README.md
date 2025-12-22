@@ -1,93 +1,102 @@
-# RFM-Customer-Lifetime-Value-Analysis-
+# 🛒 RFM Customer Segmentation & Lifetime Value Analysis
 
-This project performs RFM (Recency, Frequency, Monetary) analysis on retail transaction data to segment customers based on their purchase behavior. The final result is a fully interactive and modern Tableau dashboard that reveals actionable customer insights.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![SQL](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=Tableau&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
-## 📈 Project Objective
-To help businesses identify high-value, loyal, or lost customers using the RFM strategy, and visualize the findings in an executive-ready dashboard for stakeholder decision-making.
+> **A strategic data analytics project that leverages the RFM (Recency, Frequency, Monetary) model to segment retail customers and visualize purchasing behaviors for targeted marketing campaigns.**
 
-## ⚙️ Tools & Technologies Used
-- Python: Data Cleaning, Data analysis and RFM calculation
-- SQLite: SQL-based querying and data transformation
-- Excel: Initial data clean up
-- Tableau Public: Final data visualization
+---
 
-## 📄 Dataset
-- **Source:** [Online Retail Dataset (UCI Machine Learning Repository)](https://archive.ics.uci.edu/dataset/352/online+retail)
-- Size: 500,000+ transactions
-- Fields: Invoice No, Stock Code, Description, Quantity, Invoice Date, Unit Price, Customer ID, Country
+## 📊 Dashboard Preview
 
-## 🔄 Data Pipeline Summary
-1. Data Cleaning
- - Handled malformed delimiters (commas inside text)
- - Cleaned the columns by removing spaces
- - Droped a row with missing customerID
- - Converted Date(invoicedate) Column to Datetime
- - Doubled check to ensure correct data types
+[![View on Tableau Public](https://img.shields.io/badge/View_Interactive_Dashboard-Tableau-E97627?style=for-the-badge&logo=tableau)](https://public.tableau.com/views/CustomerLifetimeValueAnalysisVisualization/InteractiveDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
-2. Export to SQLite
- - Converted cleaned Excel data to a structured SQLite table
- - Ran SQL queries to compute Recency, Frequency, and Monetary values
+*(Note: Click the button above to interact with the full dashboard, including filters for Country, RFM Score, and Customer Segments.)*
 
-3. RFM Calculation in Python
- - Created R_score, F_score, M_score (scale 1 to 4)
- - Combined into one RFM_Score
- - Mapped customers to realistic segments:
-   - Champions
-   - Loyal Customers
-   - At Risk
-   - Lost
-   - Need More Attention
-   - Others
+---
 
-4. Export to Tableau
- - Final dataset saved as rfm_segment.csv
- - Uploaded into Tableau Public for visualization
+## 📖 Project Context
 
-## 🌎 Tableau Dashboard Overview
-The dashboard offers:
-- Customer Segment Distribution
-  - Pie chart showing each customer segment distribution
+In the competitive retail landscape, treating all customers the same leads to wasted marketing budget and missed opportunities. This project solves that problem by implementing **RFM Analysis**—a proven marketing technique used to quantitatively rank and group customers based on:
 
-- High-Value Customer Matrix
-  - Heatmap of RFM scores by Recency & Monetary
+1.  **Recency (R):** How recently did the customer purchase?
+2.  **Frequency (F):** How often do they purchase?
+3.  **Monetary Value (M):** How much do they spend?
 
-- RFM Score vs Revenue
-  - Bubble chart highlighting high-spending segments
+**Goal:** To transform 500,000+ raw transaction rows into a clear "Customer Strategy Map" that identifies **Champions**, **At-Risk** clients, and **New Opportunities**.
 
-- Total Revenue by Segment
-  - Bar chart showing total monetary value per segment
+---
 
-- Filters
-  - Interactive filters for recency, frequency, and segment
-  - Created interactive KPIs to show Total Revenue, No of Customers and Total RFM Score
+## ⚙️ Tech Stack & Workflow
 
-▶ **View it live:** [Tableau Public Dashboard (Bheki Mogola)](https://public.tableau.com/views/CustomerLifetimeValueAnalysisVisualization/InteractiveDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+| Phase | Tool | Key Actions |
+| :--- | :--- | :--- |
+| **1. Ingestion** | **Excel** | Initial data inspection and delimiter handling. |
+| **2. Cleaning** | **Python (Pandas)** | Handling missing `CustomerID`s, DateTime conversion, and type casting. |
+| **3. Processing** | **SQLite (SQL)** | Querying raw data to calculate R, F, and M values per customer. |
+| **4. Analysis** | **Python** | Scoring logic (1-4 scale) and customer segmentation mapping. |
+| **5. Visualization** | **Tableau Public** | Dashboard design, parameter creation, and interactivity. |
 
-## 🔍 Key Insights
-- Champions are contributing the highest revenue and should be retained with loyalty programs.
-- At Risk customers show declining engagement and may need reactivation strategies.
-- Lost customers present potential for win-back campaigns.
-- Need More Attention could be upsold or nurtured for future value.
+---
 
-## 🚀 How to Reproduce
-1. Clone this repository:
-```
-git clone https://github.com/Bheki0987/RFM-Customer-Lifetime-Value-Analysis.git
-```
-2. Open rfm_analysis.ipynb to explore the full analysis.
-3. Upload rfm_segment.csv into Tableau Public.
-4. Customize and publish your dashboard.
+## 🔍 Methodology
 
-## 🚀 Possible Enhancements
-- Add cohort and churn analysis
-- Automate monthly updates
-- Add customer Lifetime Value (CLTV) prediction
+### 1. Data Preprocessing
+Used Python to clean the [UCI Online Retail Dataset](https://archive.ics.uci.edu/dataset/352/online+retail). Key steps included:
+* Removal of null CustomerIDs (crucial for per-customer analysis).
+* Sanitization of text columns (stripping whitespace).
+* Date normalization to ensure accurate "Recency" calculations.
 
-## 📢 Author
-- Bheki Mogola
-- 📧 bhekimogola123@gmail.com
-- **👤 LinkedIn:** [Bheki Mogola](https://www.linkedin.com/in/bheki-mogola-8481122b7/)
-- **📈 Tableau Public:** [Bheki Mogola](https://public.tableau.com/app/profile/bheki.mogola/vizzes)
+### 2. The RFM Logic
+Customers were assigned a score from **1 to 4** for each metric:
+* **Recency:** 4 = Most recent purchase (Best), 1 = Oldest purchase.
+* **Frequency:** 4 = Most frequent buyer, 1 = One-time buyer.
+* **Monetary:** 4 = Highest spender, 1 = Lowest spender.
+
+### 3. Segmentation Strategy
+Based on the combined RFM scores, customers were grouped into actionable cohorts:
+* 🏆 **Champions:** High R, High F, High M (Reward them).
+* 💍 **Loyal Customers:** Good F and M, moderate R (Upsell them).
+* ⚠️ **At Risk:** High past value, but low Recency (Re-engage them).
+* 💤 **Lost:** Low across all metrics (Ignore or low-cost outreach).
+
+---
+
+## 📉 Key Insights
+
+* **Revenue Concentration:** A small percentage of "Champion" customers contribute a disproportionately high amount of total revenue (Pareto Principle validation).
+* **Churn Risks:** The "At Risk" segment shows high monetary history but low recency, indicating an urgent need for win-back campaigns (e.g., "We miss you" coupons).
+* **Growth Potential:** The "Need Attention" group shows promise but lacks frequency; they are prime targets for loyalty program onboarding.
+
+---
+
+## 🚀 How to Run Locally
+
+1.  **Clone the Repo:**
+    ```bash
+    git clone [https://github.com/Bheki0987/RFM-Customer-Lifetime-Value-Analysis.git](https://github.com/Bheki0987/RFM-Customer-Lifetime-Value-Analysis.git)
+    ```
+2.  **Explore the Code:**
+    Open `rfm_analysis.ipynb` in Jupyter Notebook or VS Code to see the Python and SQL logic step-by-step.
+3.  **View the Data:**
+    The processed dataset is available as `rfm_segment.csv`.
+4.  **Visualize:**
+    Connect the CSV to Tableau (or open the link above) to replicate the visuals.
+
+---
+
+## 👤 Author
+
+**Bheki Mogola**
+*Data Analyst | Python & Tableau Enthusiast*
+
+* 📧 **Email:** [bhekimogola123@gmail.com](mailto:bhekimogola123@gmail.com)
+* 🔗 **LinkedIn:** [Bheki Mogola](https://www.linkedin.com/in/bheki-mogola-8481122b7/)
+* 📈 **Tableau Portfolio:** [View my Vizzes](https://public.tableau.com/app/profile/bheki.mogola/vizzes)
+
+---
 
 ## ℹ️ License
-This project is licensed under the MIT License.
+This project is open-source and licensed under the MIT License.
